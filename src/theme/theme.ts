@@ -16,7 +16,7 @@ const theme: DefaultTheme = {
     lg: '16px',
     xl: '18px',
     xxl: '24px',
-    xxxl: '32pxß'
+    xxxl: '32px'
   },
 };
 

@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 interface TextComponentProps extends TextProps {
   variant?: 'heading' | 'body' | 'subheading' | 'button' | 'caption';
+  color?: string;
 }
 
 const BaseText = styled.Text<TextComponentProps>`
@@ -14,17 +15,17 @@ const BaseText = styled.Text<TextComponentProps>`
       case 'heading':
         return theme.fontSizes.xxl;
       case 'subheading':
-        return theme.fontSizes.medium;
+        return theme.fontSizes.md;
       case 'button':
         return theme.fontSizes.lg;
       case 'caption':
         return theme.fontSizes.sm;
       default:
-        return theme.fontSizes.medium;
+        return theme.fontSizes.md;
     }
   }};
-  font-weight: ${({variant}) => 'normal'};
-  color: ${({theme}) => theme.colors.text};
+  font-weight: ${({variant}) => 500};
+  color: ${({theme, color}) => color ?? theme.colors.text};
 `;
 
 const Text: React.FC<TextComponentProps> = ({children, ...rest}) => {

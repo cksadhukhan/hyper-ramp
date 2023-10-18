@@ -78,7 +78,7 @@ const OnBoarding: React.FC<OnBoardingProps> = (props: OnBoardingProps) => {
         data={DATA}
         onScroll={event => {
           const contentOffset = event.nativeEvent.contentOffset.x;
-          const currentIndex = Math.floor(contentOffset / (width - 32));
+          const currentIndex = Math.floor(contentOffset / (width / 1.5));
           setCurrentPage(currentIndex);
         }}
         renderItem={({item, index}) => {
