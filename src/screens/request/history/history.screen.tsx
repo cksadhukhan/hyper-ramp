@@ -1,23 +1,39 @@
 import {ScrollView, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Screen from '../../../components/screen/screen.component';
 import Header from '../components/header/header.component';
-import styled from 'styled-components/native';
-import Card from '../../../components/card/card.component';
-import Icon from 'react-native-vector-icons/AntDesign';
-import Text from '../../../components/text/text.component';
 import RequestCard from '../components/request-card/request-card.component';
+import Spacer from '../../../components/spacer/spacer.component';
+import styled from 'styled-components/native';
+import Tab from '../components/tab/tab.component';
 
-const Head = styled.View`
+const TAB_ITEMS = ['All', 'Completed', 'Pending', 'Expired'];
+
+const TabContainer = styled.View`
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const RequestHistory = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   return (
     <Screen>
       <Header />
+      <Spacer vertical={24} />
+      <TabContainer>
+        {TAB_ITEMS.map((tab, index) => {
+          return (
+            <Tab
+              key={tab}
+              label={tab}
+              index={index}
+              isSelected={index === currentIndex}
+              onPress={() => setCurrentIndex(index)}
+            />
+          );
+        })}
+      </TabContainer>
+      <Spacer vertical={16} />
       <ScrollView>
         <RequestCard
           varient="mini"
