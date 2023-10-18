@@ -18,6 +18,16 @@ const LeftIconContainer = styled.View`
   flex-direction: row;
 `;
 
+const WalletContainer = styled.View`
+  background-color: #3a393e;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 11px;
+  gap: 8px;
+  border-radius: 100px;
+`;
+
 export const Header = () => {
   return (
     <HeaderContainer>
@@ -25,8 +35,12 @@ export const Header = () => {
         <Image source={Minted} />
         <Image source={Hamburger} />
       </LeftIconContainer>
-
-      <Image source={User} />
+      <WalletContainer>
+        <Image source={User} />
+        <Text variant="body" style={{textTransform: 'uppercase'}}>
+          Connect Wallet
+        </Text>
+      </WalletContainer>
     </HeaderContainer>
   );
 };

@@ -11,7 +11,8 @@ interface ButtonProps extends TouchableOpacityProps {
 
 const BaseButton = styled.TouchableOpacity<ButtonProps>`
   padding: 12px 18px;
-  border-radius: 12px;
+  border-radius: 100px;
+  min-width: 184px;
   align-items: center;
   justify-content: center;
   background-color: ${({type, theme}) =>
