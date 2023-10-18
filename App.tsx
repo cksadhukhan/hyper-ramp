@@ -7,7 +7,8 @@ import OnBoarding from './src/screens/onboarding/onboarding.screen';
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <OnBoarding />
+      {/* <OnBoarding /> */}
+      <HomeScreen />
     </ThemeProvider>
   );
 };
