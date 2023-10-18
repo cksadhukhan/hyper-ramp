@@ -8,12 +8,16 @@ import Spacer from '../../../../components/spacer/spacer.component';
 import Button from '../../../../components/button/button.component';
 
 interface RequestCardProps {
-  type: 'awaiting' | 'completed' | 'expired';
+  type?: 'awaiting' | 'completed' | 'expired';
+  label?: string;
   sell: number;
   receive: number;
   varient?: 'mini' | 'full';
   date?: string;
   depositAccount?: string;
+  onShare?: () => void;
+  logo?: boolean;
+  theme?: 'default' | 'primary';
 }
 
 const Head = styled.View`
@@ -74,19 +78,40 @@ const ShareButton = styled(Button)<{width: number}>`
   align-self: center;
 `;
 
+const Logo = styled.Image`
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  top: -16px;
+  right: -18px;
+`;
+
 const AWAITING_COLOR = '#E5D4C0';
 const COMPLETED_COLOR = '#75E4B3';
 const EXPIRED_COLOR = '#E84855';
 const GREY = '#CECDD6';
+const WHITE = '#fff';
+const PRIMARY_COLOR = '#707BF7';
 
 const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
-  const {type, varient = 'mini', sell, receive, date, depositAccount} = props;
+  const {
+    type,
+    label,
+    varient = 'mini',
+    sell,
+    receive,
+    date,
+    depositAccount,
+    onShare,
+    logo,
+    theme = 'default',
+  } = props;
 
   const {width} = useWindowDimensions();
 
   return (
     <>
-      <Card>
+      <Card color={theme === 'primary' ? PRIMARY_COLOR : undefined}>
         <Head>
           <>
             {type === 'awaiting' && (
@@ -104,8 +129,13 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
                 Expired
               </Text>
             )}
+            {label && (
+              <Text variant="subheading" color={WHITE}>
+                {label}
+              </Text>
+            )}
           </>
-          {varient === 'mini' && (
+          {varient === 'mini' && !logo && (
             <TouchableOpacity onPress={() => {}}>
               <Icon name="right" />
             </TouchableOpacity>
@@ -142,7 +172,16 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
             type="primary"
             text="Share Link"
             width={width / 2}
-            onPress={() => {}}
+            onPress={onShare}
+          />
+        )}
+        {logo && (
+          <Logo
+            source={
+              theme === 'primary'
+                ? require('../../../../assets/logos/logo-dark.png')
+                : require('../../../../assets/logos/logo-light.png')
+            }
           />
         )}
       </Card>

@@ -1,14 +1,12 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
 import theme from './src/theme/theme';
-import HomeScreen from './src/screens/home/home.screen';
-import OnBoarding from './src/screens/onboarding/onboarding.screen';
-import RequestHistory from './src/screens/request/history/history.screen';
+import RequestDetailsScreen from './src/screens/request/details/details.screen';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <RequestHistory />
+      <RequestDetailsScreen />
     </ThemeProvider>
   );
 };
