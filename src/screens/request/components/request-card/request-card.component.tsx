@@ -18,6 +18,8 @@ interface RequestCardProps {
   onShare?: () => void;
   logo?: boolean;
   theme?: 'default' | 'primary';
+  timestamp?: string;
+  ethValue?: string;
 }
 
 const Head = styled.View`
@@ -84,6 +86,22 @@ const Logo = styled.Image`
   position: absolute;
   top: -16px;
   right: -18px;
+`;
+
+const EthValuePanel = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Requote = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const RequoteIcon = styled(AntIcon)`
+  color: ${({theme}) => theme.colors.white};
+  margin-right: 6px;
 `;
 
 const AWAITING_COLOR = '#E5D4C0';
@@ -155,17 +173,30 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
             </ReceiveContent>
           </ReceiveContainer>
         </Middle>
-        <HorizontalSeperator />
-        <Text variant="body" color={GREY}>
-          On Ethereum Chain
-        </Text>
-        <HorizontalSeperator />
-        <Footer>
-          <Text variant="body" color={GREY}>
-            Deposit into
-          </Text>
-          <Text variant="body" color={GREY}></Text>
-        </Footer>
+        {theme === 'default' && (
+          <>
+            <HorizontalSeperator />
+            <Text variant="body" color={GREY}>
+              On Ethereum Chain
+            </Text>
+            <HorizontalSeperator />
+            <Footer>
+              <Text variant="body" color={GREY}>
+                Deposit into
+              </Text>
+              <Text variant="body" color={GREY}></Text>
+            </Footer>
+          </>
+        )}
+        {theme === 'primary' && (
+          <EthValuePanel>
+            <Text variant="caption">{'1 ETH = 2,085.96 USD'}</Text>
+            <Requote>
+              <RequoteIcon name="clockcircleo" />
+              <Text variant="caption">{'Requoting in 10s'}</Text>
+            </Requote>
+          </EthValuePanel>
+        )}
         {varient === 'full' && <Spacer vertical={16} />}
         {varient === 'full' && (
           <ShareButton
