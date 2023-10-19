@@ -20,6 +20,8 @@ interface RequestCardProps {
   theme?: 'default' | 'primary';
   timestamp?: string;
   ethValue?: string;
+  firstLabel?: string;
+  secondLabel?: string;
 }
 
 const Head = styled.View`
@@ -123,6 +125,8 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
     onShare,
     logo,
     theme = 'default',
+    firstLabel,
+    secondLabel,
   } = props;
 
   const {width} = useWindowDimensions();
@@ -162,13 +166,13 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
         <Spacer vertical={10} />
         <Middle>
           <SellContent>
-            <Text variant="subheading">Sell</Text>
+            <Text variant="subheading">{firstLabel ?? 'Sell'}</Text>
             <Text variant="button">{sell}</Text>
           </SellContent>
           <ReceiveContainer>
             <Seperator />
             <ReceiveContent>
-              <Text variant="subheading">Receive</Text>
+              <Text variant="subheading">{secondLabel ?? 'Receive'}</Text>
               <Text variant="button">{receive}</Text>
             </ReceiveContent>
           </ReceiveContainer>
