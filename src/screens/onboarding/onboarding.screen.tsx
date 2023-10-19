@@ -70,7 +70,7 @@ const OnBoarding: React.FC<OnBoardingProps> = (props: OnBoardingProps) => {
   return (
     <Screen>
       <Logo source={require('../../assets/logos/logo-light.png')} />
-      <View style={{height: 16}}></View>
+      <View style={{height: 16}} />
       <FlatList
         horizontal
         pagingEnabled
@@ -84,7 +84,7 @@ const OnBoarding: React.FC<OnBoardingProps> = (props: OnBoardingProps) => {
         renderItem={({item, index}) => {
           return (
             <Card width={width}>
-              <Image source={item.image}></Image>
+              <Image source={item.image} />
               <Spacer vertical={24} />
               <Text variant="heading">{item.heading}</Text>
               <Spacer vertical={16} />

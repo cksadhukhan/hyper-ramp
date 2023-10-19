@@ -41,6 +41,7 @@ const RequestHistory = () => {
           receive={2944.56}
           sell={1.5}
         />
+        <Spacer vertical={10} />
         <RequestCard
           varient="full"
           type="completed"
