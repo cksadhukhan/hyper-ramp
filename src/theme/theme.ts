@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components/native';
+import {DefaultTheme} from 'styled-components/native';
 
 const theme: DefaultTheme = {
   colors: {
@@ -8,7 +8,8 @@ const theme: DefaultTheme = {
     text: '#fff',
     base: '#3A393E',
     grey: '#CECDD6',
-    white: '#fff'
+    white: '#fff',
+    greyBg: '#232325',
   },
   fontSizes: {
     sm: '12px',
@@ -16,7 +17,7 @@ const theme: DefaultTheme = {
     lg: '16px',
     xl: '18px',
     xxl: '24px',
-    xxxl: '32px'
+    xxxl: '32px',
   },
 };
 

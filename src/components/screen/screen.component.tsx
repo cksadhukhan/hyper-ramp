@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 const Layout = styled.SafeAreaView`
   flex: 1;
-  background-color: ${({theme}) => theme.colors.background};
+  background-color: ${({theme}) => theme.colors.greyBg};
   padding: 28px 16px;
 `;
 interface ScreenProps {
